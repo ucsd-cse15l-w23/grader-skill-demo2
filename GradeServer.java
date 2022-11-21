@@ -16,11 +16,13 @@ class ExecHelpers {
     In Java 9 and later, new String(out.readAllBytes()) would be a better
     option, but using Java 8 for compatibility with ieng6.
   */
-  static String streamToString(InputStream out) {
-    Stream<String> lines = new BufferedReader(new InputStreamReader(out)).lines();
+  static String streamToString(InputStream out) throws IOException {
     String result = "";
-    for(Object o: lines.toArray()) {
-      result += (String)o + "\n";
+    while(true) {
+      int c = out.read();
+      if(c == -1) { break; }
+      result += (char)c;
+      System.out.println(System.currentTimeMillis() + "; just read: " + (char)c);
     }
     return result;
   }
