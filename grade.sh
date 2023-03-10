@@ -10,6 +10,7 @@ then
 else
   echo 'ListExamples.java not found'
   echo 'Score: 0/4'
+  exit 1
 fi
 
 cp student-submission/ListExamples.java ./
