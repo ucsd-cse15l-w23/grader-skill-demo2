@@ -10,21 +10,22 @@ class IsMoon implements StringChecker {
 }
 
 public class TestListExamples {
+
   @Test(timeout = 500)
   public void testMergeRightEnd() {
-    List<String> left = Arrays.asList("a", "b", "c");
-    List<String> right = Arrays.asList("a", "d");
+    List<String> left = Arrays.asList("a", "c", "e");
+    List<String> right = Arrays.asList("b", "h");
     List<String> merged = ListExamples.merge(left, right);
-    List<String> expected = Arrays.asList("a", "a", "b", "c", "d");
+    List<String> expected = Arrays.asList("a", "b", "c", "e", "h");
     assertEquals(expected, merged);
   }
 
   @Test(timeout = 500)
   public void testMergeLeftEnd() {
-    List<String> left = Arrays.asList("a", "b", "z");
-    List<String> right = Arrays.asList("a", "d");
+    List<String> left = Arrays.asList("a", "c", "z");
+    List<String> right = Arrays.asList("b", "d");
     List<String> merged = ListExamples.merge(left, right);
-    List<String> expected = Arrays.asList("a", "a", "b", "d", "z");
+    List<String> expected = Arrays.asList("a", "b", "c", "d", "z");
     assertEquals(expected, merged);
   }
 

@@ -22,7 +22,6 @@ class ExecHelpers {
       int c = out.read();
       if(c == -1) { break; }
       result += (char)c;
-      System.out.println(System.currentTimeMillis() + "; just read: " + (char)c);
     }
     return result;
   }
@@ -63,7 +62,7 @@ class Handler implements URLHandler {
 class GradeServer {
     public static void main(String[] args) throws IOException {
         if(args.length == 0){
-            System.out.println("Missing port number! Try any number between 1024 to 49151");
+            System.err.println("Missing port number! Try any number between 1024 to 49151");
             return;
         }
 
