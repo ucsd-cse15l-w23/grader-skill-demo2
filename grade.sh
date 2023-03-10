@@ -28,12 +28,12 @@ java -cp $CPATH org.junit.runner.JUnitCore TestListExamples > junit-output.txt
 # get the count
 FAILURES=`grep -c FAILURES!!! junit-output.txt`
 
-cat junit-output.txt
 
 if [[ $FAILURES -eq 0 ]]
 then
-  echo 'All tests passed'
-  echo '5/5'
+  RESULT_LINE=`grep "OK " junit-output.txt`
+  PASSED=${RESULT_LINE:4:1}
+  TOTAL=$PASSED
 else
   # The ${VAR:N:M} syntax gets a substring of length M starting at index N
   # Note that since this is a precise character count into the "Tests run:..."
@@ -52,10 +52,11 @@ else
 
   echo "JUnit output was:"
   cat junit-output.txt
-  echo ""
-  echo "--------------"
-  echo "| Score: $PASSED/$TOTAL |"
-  echo "--------------"
-  echo ""
 fi
+
+echo ""
+echo "--------------"
+echo "| Score: $PASSED/$TOTAL |"
+echo "--------------"
+echo ""
 
